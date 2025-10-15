@@ -1,15 +1,2 @@
 #!/bin/bash
-# 16-if_only
-
-# Fichier à traiter
-file="hello"
-
-# Vérifie que le fichier existe
-if [ -f "$file" ]; then
-    # Récupère le propriétaire actuel
-    owner=$(stat -c %U "$file")
-    # Si le propriétaire est guillaume, on change vers vincent
-    if [ "$owner" = "guillaume" ]; then
-        chown vincent "$file"
-    fi
-fi
+[ "$(stat -c %U hello)" = "guillaume" ] && chown vincent hello
